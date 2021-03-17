@@ -46,6 +46,8 @@
             this.lblRemoveHero = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnRemoveHero = new System.Windows.Forms.Button();
+            this.btnAscending = new System.Windows.Forms.Button();
+            this.btnDescending = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewNumbers
@@ -168,6 +170,7 @@
             this.btnRemoveAllNumbers.TabIndex = 11;
             this.btnRemoveAllNumbers.Text = "Remove All";
             this.btnRemoveAllNumbers.UseVisualStyleBackColor = true;
+            this.btnRemoveAllNumbers.Click += new System.EventHandler(this.btnRemoveAllNumbers_Click);
             // 
             // btnAddHero
             // 
@@ -178,6 +181,7 @@
             this.btnAddHero.TabIndex = 12;
             this.btnAddHero.Text = "Add";
             this.btnAddHero.UseVisualStyleBackColor = true;
+            this.btnAddHero.Click += new System.EventHandler(this.btnAddHero_Click);
             // 
             // txtAddHero
             // 
@@ -223,12 +227,35 @@
             this.btnRemoveHero.TabIndex = 17;
             this.btnRemoveHero.Text = "Remove";
             this.btnRemoveHero.UseVisualStyleBackColor = true;
+            this.btnRemoveHero.Click += new System.EventHandler(this.btnRemoveHero_Click);
+            // 
+            // btnAscending
+            // 
+            this.btnAscending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAscending.Location = new System.Drawing.Point(268, 109);
+            this.btnAscending.Name = "btnAscending";
+            this.btnAscending.Size = new System.Drawing.Size(81, 23);
+            this.btnAscending.TabIndex = 18;
+            this.btnAscending.Text = "Ascending";
+            this.btnAscending.UseVisualStyleBackColor = true;
+            // 
+            // btnDescending
+            // 
+            this.btnDescending.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescending.Location = new System.Drawing.Point(268, 138);
+            this.btnDescending.Name = "btnDescending";
+            this.btnDescending.Size = new System.Drawing.Size(81, 23);
+            this.btnDescending.TabIndex = 19;
+            this.btnDescending.Text = "Descending";
+            this.btnDescending.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 412);
+            this.Controls.Add(this.btnDescending);
+            this.Controls.Add(this.btnAscending);
             this.Controls.Add(this.btnRemoveHero);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblRemoveHero);
@@ -275,6 +302,8 @@
         private System.Windows.Forms.Label lblRemoveHero;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnRemoveHero;
+        private System.Windows.Forms.Button btnAscending;
+        private System.Windows.Forms.Button btnDescending;
     }
 }
 

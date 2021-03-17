@@ -15,7 +15,7 @@ namespace Part_7___Lists__Collections_
         List<int> numbers = new List<int>();
         List<string> heroes = new List<string>();
 
-        
+        string addheroes;
 
         
 
@@ -25,7 +25,7 @@ namespace Part_7___Lists__Collections_
         {
             InitializeComponent();
 
-
+           
 
         }
 
@@ -37,8 +37,7 @@ namespace Part_7___Lists__Collections_
         private void btnSortNumbers_Click(object sender, EventArgs e)
         {
             numbers.Sort();
-            lstNumbers.DataSource = null;
-            lstNumbers.DataSource = numbers;
+            UpdateListbox();
 
             lblStatus.Text = $"Status: Numbers Sorted";
 
@@ -48,8 +47,7 @@ namespace Part_7___Lists__Collections_
         private void btnSortHeroes_Click(object sender, EventArgs e)
         {
             heroes.Sort();
-            lstHeroes.DataSource = null;
-            lstHeroes.DataSource = heroes;
+            UpdateListbox();
 
             lblStatus.Text = $"Status: Heroes Sorted";
         }
@@ -78,8 +76,7 @@ namespace Part_7___Lists__Collections_
             for (int i = 0; i < 20; i++)
                 numbers.Add(generator.Next(100));
 
-            lstNumbers.DataSource = null;
-            lstNumbers.DataSource = numbers;
+            UpdateListbox();
 
             lblStatus.Text = $"Status: New Numbers List";
 
@@ -93,20 +90,64 @@ namespace Part_7___Lists__Collections_
             heroes.Add("Superman");
             heroes.Add("Batman");
 
-            lstHeroes.DataSource = null;
-            lstHeroes.DataSource = heroes;
+            UpdateListbox();
 
             lblStatus.Text = $"Status: New Heroes List";
         }
 
         private void btnRemoveNumber_Click(object sender, EventArgs e)
         {
-            lstNumbers.SelectedIndex.RemoveAt();
 
+            //lstNumbers.SelectedIndex;
+
+            if (lstNumbers.SelectedIndex > -1)
+            {
+                numbers.RemoveAt(lstNumbers.SelectedIndex);
+            }
+
+            UpdateListbox();
+
+            lblStatus.Text = $"Status: Selected Number Removed";
+
+
+        }
+
+        private void btnRemoveAllNumbers_Click(object sender, EventArgs e)
+        {
+                while (numbers.Remove((int)lstNumbers.SelectedItem)) ;
+
+            UpdateListbox();
+
+            lblStatus.Text = $"Status: All Numbers Removed";
+
+
+
+
+        }
+        private void UpdateListbox()
+        {
             lstNumbers.DataSource = null;
             lstNumbers.DataSource = numbers;
 
+            lstHeroes.DataSource = null;
+            lstHeroes.DataSource = heroes;
+        }
 
+        private void btnRemoveHero_Click(object sender, EventArgs e)
+        {
+            heroes.Remove((string)lstHeroes.SelectedItem);
+
+            UpdateListbox();
+
+            lblStatus.Text = $"Status: Hero Removed";
+        }
+
+        private void btnAddHero_Click(object sender, EventArgs e)
+        {
+            addheroes = Convert.ToString(txtAddHero.Text);
+            heroes.Add(addheroes);
+
+            UpdateListbox();
         }
     }
 }
