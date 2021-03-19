@@ -15,7 +15,6 @@ namespace Part_7___Lists__Collections_
         List<int> numbers = new List<int>();
         List<string> heroes = new List<string>();
 
-        string addheroes;
 
         
 
@@ -57,9 +56,9 @@ namespace Part_7___Lists__Collections_
             for (int i = 0; i < 20; i++)
                 numbers.Add(generator.Next(100));
 
-            heroes.Add("Batman");
+            heroes.Add("BATMAN");
 
-            heroes.Add("Superman");
+            heroes.Add("SUPERMAN");
 
 
             lstNumbers.DataSource = numbers;
@@ -87,12 +86,14 @@ namespace Part_7___Lists__Collections_
         {
             heroes.Clear();
 
-            heroes.Add("Superman");
-            heroes.Add("Batman");
+            heroes.Add("SUPERMAN");
+            heroes.Add("BATMAN");
 
             UpdateListbox();
 
             lblStatus.Text = $"Status: New Heroes List";
+
+
         }
 
         private void btnRemoveNumber_Click(object sender, EventArgs e)
@@ -135,19 +136,63 @@ namespace Part_7___Lists__Collections_
 
         private void btnRemoveHero_Click(object sender, EventArgs e)
         {
-            heroes.Remove((string)lstHeroes.SelectedItem);
+            if (heroes.Contains(txtRemoveHero.Text.Trim().ToUpper()))
+            {
+                heroes.Remove(txtRemoveHero.Text.ToUpper());
+                UpdateListbox();
+            
+                lblStatus.Text = ($"Status: {txtRemoveHero.Text} + has been removed");
+                txtRemoveHero.Text = "";
+            }
+            else
+            {
+                lblStatus.Text = ($"Status: { txtRemoveHero.Text} + does not exist in the list of current heroes");
+                txtRemoveHero.Text = "";
+            }
 
-            UpdateListbox();
-
-            lblStatus.Text = $"Status: Hero Removed";
         }
-
         private void btnAddHero_Click(object sender, EventArgs e)
         {
-            addheroes = Convert.ToString(txtAddHero.Text);
-            heroes.Add(addheroes);
+            string newHero = txtAddHero.Text.Trim();
+            if (newHero != "")
+            {
+                if (heroes.Contains(newHero.ToUpper()))
+                {
+                    lblError.Text = "Please enter a new Hero in the list";
+                    lblStatus.Text = "Error";
+                    txtAddHero.Text = "";
+                }
+                else
+                {
+                    heroes.Add(newHero.ToUpper());
+                    UpdateListbox();
+                    lblStatus.Text = ($"New Hero named {newHero} has been added");
+                    txtAddHero.Text = "";
+                }
+            }
+            
 
+        }
+
+        private void btnAscending_Click(object sender, EventArgs e)
+        {
+            numbers.Sort();
+            heroes.Sort();
             UpdateListbox();
+
+            lblStatus.Text = $"Status: Numbers Sorted";
+            lblStatus.Text = $"Status: Heroes Sorted";
+        }
+
+        private void btnDescending_Click(object sender, EventArgs e)
+        {
+            numbers.Sort();
+            numbers.Reverse();
+            heroes.Reverse();
+            UpdateListbox();
+
+            lblStatus.Text = $"Status: Numbers Sorted";
+            lblStatus.Text = $"Status; Heros Sorted";
         }
     }
 }
