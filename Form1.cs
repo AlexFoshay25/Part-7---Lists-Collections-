@@ -180,8 +180,7 @@ namespace Part_7___Lists__Collections_
             heroes.Sort();
             UpdateListbox();
 
-            lblStatus.Text = $"Status: Numbers Sorted";
-            lblStatus.Text = $"Status: Heroes Sorted";
+            lblStatus.Text = $"Status: Lists Sorted";
         }
 
         private void btnDescending_Click(object sender, EventArgs e)
@@ -191,8 +190,7 @@ namespace Part_7___Lists__Collections_
             heroes.Reverse();
             UpdateListbox();
 
-            lblStatus.Text = $"Status: Numbers Sorted";
-            lblStatus.Text = $"Status; Heros Sorted";
+            lblStatus.Text = $"Status: Lists Sorted";
         }
     }
 }
